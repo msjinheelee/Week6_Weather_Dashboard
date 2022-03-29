@@ -3,19 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fetch Demo</title>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
+
   <body class="min-100-vh flex-column">
     <header class="p-5 text-center text-white bg-primary">
-      <h1>Server-Side APIs</h1>
+      <h1>Weather Dashboard</h1>
     </header>
-    <main class="flex-row justify-center align-center col-auto p-4 bg-light">
-      <section class="card card-rounded col-7 bg-white">
-        <header class="card-header text-center">
-          <h2 class="text-white">
-            Fetch Demo
-          </h2>
+    <main class ="container-fluid">
+    <div class = "row">
+      <div class="col-12 col-md-3 p-2 search-column">
+          <form class = "border p-2" id = "city-search-form">
+              <h4>Search for a City</h2>
+              <input id="city" type = "text" autofocus = "true" class = "form-input"/>
+              <button class = "btn btn-primary" type = "submit">Search</button>
+          </form>
+
+    
         </header>
         <div class="text-center pt-4">
           <button class="btn btn-danger" id="fetch-button">
