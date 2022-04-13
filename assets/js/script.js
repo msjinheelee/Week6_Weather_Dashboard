@@ -6,17 +6,48 @@ const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temparature-value p");
 const descElement = document.querySelector(".temparature-description p");
 const locationElement = document.querySelector(".location p");
+const weather = {};
 
-displayWeather() {
+weather.temparature = {
+    unit: "celcious"
+}
+
+// my api key
+const apiKey = "72855eb2caa85cef62fe58ad9093eafc"; 
+
+// check if the brower supports geolocation
+if("geolocation" in navigator){
+    navigator.geolocation.getCurrentPosition( setPosition, showError);
+} else{
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = "<p>We couldn't find the Geolocation.</p>"
+}
+
+ 
+// define users location
+function setPosition(){
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude; 
+    getWeather(latitude, longitude);
+}
+// show error if users location is not found
+function showError(error){
+    notificationElement.style.display = "block";
+    notificationElement.innerHTML = `<p> ${error.message} </p>`
+}
+
+
+
+displayWeather();{
  iconElement.innerHTML = 
-    `<img src="icons/${weather.iconID}.png"/>`;
+    `<img src="icons/${weather.iconID}.png"/>`
 
     tempElement.innerHTML = 
-        `${weather.temperature.value} ° <span> C </span>`;
+        `${weather.temperature.value} ° <span> C </span>`
     descElement.innerHTML = 
-        `weather.description`; 
+        weather.description; 
     locationElement.innerHTML = 
-        `${weather.city}, ${weather.country}`;
+        `${weather.city}, ${weather.country}`
 }
 
 function fahrenheitToCelcious (temparature) {
@@ -35,6 +66,36 @@ tempElement.addEventListener("click", function(){
         weather.temparature.unit = "fahrenheit"; 
     }
 })
+
+
+   
+    
+    
+
+    function getWeather(latitude, longitude){
+        let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudue}&lon=${longitude}&appid=${apiKey}`;
+        fetch(apiURL) .then( function(response){
+            let data = response.json();
+            return data;
+        })
+
+        .then( function(data){
+            weather.temparature.value = Math.floor(data.main.temp);
+            weather.description = data.weather[0].description;
+            weather.iconId = data.weather[0].icon;
+            weather.city = data.name;
+            weather.country = data.sys.country;
+        })
+    
+        .then( function(){
+            displayWeather();
+        });
+    
+    
+    }
+
+
+
 
 // var cities = [];
 
