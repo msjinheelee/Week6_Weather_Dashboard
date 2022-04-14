@@ -28,9 +28,18 @@ let weather = {
 
     document.querySelector(".search button").addEventListener("click", function() {
         weather.search();
-} );
+});
 
+    document.querySelector(".search-bar").addEventListener("keyup", function(event) {
+    if (event.key == "Enter") {
+        weather.search();
+    }
+});
 
+weather.fetchWeather
+
+// to get the 5 days weather
+'https://api.openweathermap.org/data/2.5/forecast?lat=30&lon=100&cnt=5&appid=72855eb2caa85cef62fe58ad9093eafc'
 
 // https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc
 
