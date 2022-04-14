@@ -42,4 +42,6 @@ border-radius: 18px;
 
 }
 
-.input.search
+.icon {
+  background-color: transparent;
+}

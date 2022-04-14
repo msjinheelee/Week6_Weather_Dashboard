@@ -2,13 +2,30 @@
 
 let weather = {
     "apiKey": "72855eb2caa85cef62fe58ad9093eafc",
-    fetchWeather: function(){
+    fetchWeather: function(city){
         fetch(
-            "https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc"
+            "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc"
             ).then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => this.displayWeather(data))
     },
-};
+    displayWeather: function(data){
+        const { name } = data;
+        const { icon, description } = data.weather[0];
+        const { temp, humidity } = data.main;
+        const { speed } = data.wind; 
+        console.log(name, icon, description, temp, humidity, speed)
+        document.querySelector(".city").innerHTML = "Weather in " + name;
+        document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
+        document.querySelector(".description").innerHTML = description;
+        document.querySelector(".temp").innerHTML = temp + " °C";
+        document.querySelector(".humidity").innerHTML = "humidity: " + humidity + "%";
+        document.querySelector(".wind").innerHTML = "Wind Speed: " + speed + " km/h";
+    }
+} ;
+
+
+
+
 
 // https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc
 
