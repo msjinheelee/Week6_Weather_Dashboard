@@ -1,5 +1,5 @@
-let name = prompt("Hello, What is your name?");
-alert("Hello, " + name + " Welcome to my weather dashboard!");
+// let name = prompt("Hello, What is your name?");
+// alert("Hello, " + name + " Welcome to my weather dashboard!");
 
 const notificationElement = document.querySelector(".notification");
 const iconElement = document.querySelector(".weather-icon");
@@ -74,6 +74,9 @@ tempElement.addEventListener("click", function(){
 
     function getWeather(latitude, longitude){
         let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudue}&lon=${longitude}&appid=${apiKey}`;
+
+
+
         fetch(apiURL) .then( function(response){
             let data = response.json();
             return data;

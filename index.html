@@ -14,7 +14,18 @@
       <h1>Weather Dashboard</h1>
     </header>
 
-  <div class="container">
+<div style="width:1000px; margin-top:40px; text-align:center">
+<input type=text name="city" id="city" value="" style="width: 180px; height:24px; vertical-align: top;" placeholder="도시를 입력하세요">
+<button onclick="javascript:goSearche();">날씨 검색</button>
+</div>
+
+<div style="margin-left: 50px"; margin-top:15px; color:blue; font-weigth:bold">
+검색결과
+</div> 
+<div id="weather_result" style="margin-left:50px; width:90%; min-height: 250px; display: inline-block; margin-top: 10px; margin-left: 50px; padding: 6px; padding-right: 75px; border:1px solid black">
+</div>
+
+  <!-- <div class="container">
   <div class="app-header"><p>Weather</p></div>
   <div class="notification"></div>
   <div class="weather-container">
@@ -25,7 +36,7 @@
 
 
   </div>
-  </div>
+  </div> -->
 
   <script src="./assets/js/script.js"></script>
 
