@@ -1,101 +1,138 @@
+
+
+let weather = {
+    "apiKey": "72855eb2caa85cef62fe58ad9093eafc",
+    fetchWeather: function(){
+        fetch(
+            "https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc"
+            ).then((response) => response.json())
+        .then((data) => console.log(data))
+    },
+};
+
+// https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc
+
+
 // let name = prompt("Hello, What is your name?");
 // alert("Hello, " + name + " Welcome to my weather dashboard!");
 
-const notificationElement = document.querySelector(".notification");
-const iconElement = document.querySelector(".weather-icon");
-const tempElement = document.querySelector(".temparature-value p");
-const descElement = document.querySelector(".temparature-description p");
-const locationElement = document.querySelector(".location p");
-const weather = {};
+// function goSearch (){
+//     var searchCity = $("#city").val();
+//     if(!searchCity){
+//         alert("Enter the city");
+//         return false;
+//     } else{
+//     $.ajax({
+//         type: 'POST',
+//         dataType:'json',
+//         url: "lib.php",
+//         data: {'search_city': searchCity},
+//         cache: false,
+//         async: false
+//     }) 
+//     .done(function(result){
+//         alert("success");
+//     });
+// }
+// }
 
-weather.temparature = {
-    unit: "celcious"
-}
 
-// my api key
-const apiKey = "72855eb2caa85cef62fe58ad9093eafc"; 
 
-// check if the brower supports geolocation
-if("geolocation" in navigator){
-    navigator.geolocation.getCurrentPosition( setPosition, showError);
-} else{
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>We couldn't find the Geolocation.</p>"
-}
+// const notificationElement = document.querySelector(".notification");
+// const iconElement = document.querySelector(".weather-icon");
+// const tempElement = document.querySelector(".temparature-value p");
+// const descElement = document.querySelector(".temparature-description p");
+// const locationElement = document.querySelector(".location p");
+// const weather = {};
+
+// weather.temparature = {
+//     unit: "celcious"
+// }
+
+// // my api key
+// const apiKey = "72855eb2caa85cef62fe58ad9093eafc"; 
+
+// // check if the brower supports geolocation
+// if("geolocation" in navigator){
+//     navigator.geolocation.getCurrentPosition( setPosition, showError);
+// } else{
+//     notificationElement.style.display = "block";
+//     notificationElement.innerHTML = "<p>We couldn't find the Geolocation.</p>"
+// }
 
  
-// define users location
-function setPosition(){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude; 
-    getWeather(latitude, longitude);
-}
-// show error if users location is not found
-function showError(error){
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> ${error.message} </p>`
-}
+// // define users location
+// function setPosition(){
+//     let latitude = position.coords.latitude;
+//     let longitude = position.coords.longitude; 
+//     getWeather(latitude, longitude);
+// }
+// // show error if users location is not found
+// function showError(error){
+//     notificationElement.style.display = "block";
+//     notificationElement.innerHTML = `<p> ${error.message} </p>`
+// }
 
 
 
-displayWeather();{
- iconElement.innerHTML = 
-    `<img src="icons/${weather.iconID}.png"/>`
+// displayWeather();{
+//  iconElement.innerHTML = 
+//     `<img src="icons/${weather.iconID}.png"/>`
 
-    tempElement.innerHTML = 
-        `${weather.temperature.value} ° <span> C </span>`
-    descElement.innerHTML = 
-        weather.description; 
-    locationElement.innerHTML = 
-        `${weather.city}, ${weather.country}`
-}
+//     tempElement.innerHTML = 
+//         `${weather.temperature.value} ° <span> C </span>`
+//     descElement.innerHTML = 
+//         weather.description; 
+//     locationElement.innerHTML = 
+//         `${weather.city}, ${weather.country}`
+// }
 
-function fahrenheitToCelcious (temparature) {
-    return ((temparature - 30)/2);
-}
+// function fahrenheitToCelcious (temparature) {
+//     return ((temparature - 30)/2);
+// }
 
-tempElement.addEventListener("click", function(){
-    if(weather.temparature.value === undefined) return;
-    if(weather.temparature.unit === "fahrenheit") {
-        let celcious = fahrenheitToCelcious(weather.temparature.value);
-        celcious = Math.floor(celcious);
-        tempElement.innerHTML = `${weather.temparature.value}° <span> C </span>`;
-        weather.temparature.unit = "celcious";
-    } else{
-        tempElement.innerHTML = `${fahrenheit}° <span> F</span>`; 
-        weather.temparature.unit = "fahrenheit"; 
-    }
-})
+// tempElement.addEventListener("click", function(){
+//     if(weather.temparature.value === undefined) return;
+//     if(weather.temparature.unit === "fahrenheit") {
+//         let celcious = fahrenheitToCelcious(weather.temparature.value);
+//         celcious = Math.floor(celcious);
+//         tempElement.innerHTML = `${weather.temparature.value}° <span> C </span>`;
+//         weather.temparature.unit = "celcious";
+//     } else{
+//         tempElement.innerHTML = `${fahrenheit}° <span> F</span>`; 
+//         weather.temparature.unit = "fahrenheit"; 
+//     }
+// })
 
 
    
     
     
 
-    function getWeather(latitude, longitude){
-        let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudue}&lon=${longitude}&appid=${apiKey}`;
+//     function getWeather(latitude, longitude){
+//         let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudue}&lon=${longitude}&appid=${apiKey}`;
 
 
 
-        fetch(apiURL) .then( function(response){
-            let data = response.json();
-            return data;
-        })
+//         fetch(apiURL) .then( function(response){
+//             let data = response.json();
+//             return data;
+//         })
 
-        .then( function(data){
-            weather.temparature.value = Math.floor(data.main.temp);
-            weather.description = data.weather[0].description;
-            weather.iconId = data.weather[0].icon;
-            weather.city = data.name;
-            weather.country = data.sys.country;
-        })
+//         .then( function(data){
+//             weather.temparature.value = Math.floor(data.main.temp);
+//             weather.description = data.weather[0].description;
+//             weather.iconId = data.weather[0].icon;
+//             weather.city = data.name;
+//             weather.country = data.sys.country;
+//         })
     
-        .then( function(){
-            displayWeather();
-        });
+//         .then( function(){
+//             displayWeather();
+//         });
     
     
-    }
+//     }
 
 
 
