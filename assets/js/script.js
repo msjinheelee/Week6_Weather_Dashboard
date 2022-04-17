@@ -1,5 +1,3 @@
-
-
 let weather = {
     "apiKey": "72855eb2caa85cef62fe58ad9093eafc",
     fetchWeather: function(city){
@@ -38,8 +36,41 @@ let weather = {
 
 weather.fetchWeather
 
-// to get the 5 days weather
-'https://api.openweathermap.org/data/2.5/forecast?lat=30&lon=100&cnt=5&appid=72855eb2caa85cef62fe58ad9093eafc'
+
+// let forecast = {
+//     "apiKey": "72855eb2caa85cef62fe58ad9093eafc",
+//     fetchForecast: function(city){
+//         fetch(
+//             "https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc"
+//             fetch (http://api.openweathermap.org/geo/1.0/direct?q=city&limit=1&appid=72855eb2caa85cef62fe58ad9093eafc)
+//             ).then((response) => lat = response.lat; lon = response.lon)
+//         .then((data) => this.displayForecast(data))
+//     },
+//     displayForecast: function(data){
+//         const { data } = data;
+//         const { icon, description } = data.weather[0];
+//         const { temp, humidity } = data.main;
+//         const { speed } = data.wind; 
+//         console.log(name, icon, description, temp, humidity, speed)
+//     },
+
+
+
+//     search: function () {
+//        this.fetchForecast(document.querySelector(".search-bar").value);
+//     }
+// } ;
+
+//     document.querySelector(".search button").addEventListener("click", function() {
+//         weather.search();
+// });
+
+//     document.querySelector(".search-bar").addEventListener("keyup", function(event) {
+//     if (event.key == "Enter") {
+//         weather.search();
+//     }
+// });
+
 
 // https://api.openweathermap.org/data/2.5/weather?q=sydney&units=metric&appid=72855eb2caa85cef62fe58ad9093eafc
 
@@ -47,25 +78,7 @@ weather.fetchWeather
 // let name = prompt("Hello, What is your name?");
 // alert("Hello, " + name + " Welcome to my weather dashboard!");
 
-// function goSearch (){
-//     var searchCity = $("#city").val();
-//     if(!searchCity){
-//         alert("Enter the city");
-//         return false;
-//     } else{
-//     $.ajax({
-//         type: 'POST',
-//         dataType:'json',
-//         url: "lib.php",
-//         data: {'search_city': searchCity},
-//         cache: false,
-//         async: false
-//     }) 
-//     .done(function(result){
-//         alert("success");
-//     });
-// }
-// }
+
 
 
 
