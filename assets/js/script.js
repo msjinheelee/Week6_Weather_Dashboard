@@ -11,13 +11,20 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind; 
-        console.log(name, icon, description, temp, humidity, speed)
+        const { lon, lat } = data.coord;
+        const newFetchUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon="+ lon + "&exclude=hourly,minutely,current,alerts&appid=72855eb2caa85cef62fe58ad9093eafc";
+        
+        console.log(newFetchUrl);
+        // console.log(latitude);
+        // console.log(name, icon, description, temp, humidity, speed, latitude, longitude);
         document.querySelector(".city").innerHTML = "Weather in " + name;
         document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
         document.querySelector(".description").innerHTML = description;
         document.querySelector(".temp").innerHTML = temp + " °C";
         document.querySelector(".humidity").innerHTML = "humidity: " + humidity + "%";
         document.querySelector(".wind").innerHTML = "Wind Speed: " + speed + " km/h";
+        document.querySelector(".latitude").innerHTML = "latitude: " + lat;
+        document.querySelector(".longitude").innerHTML = "latitude: " + lon;
     },
     search: function () {
        this.fetchWeather(document.querySelector(".search-bar").value);
@@ -35,6 +42,28 @@ let weather = {
 });
 
 weather.fetchWeather
+
+
+
+// var display5Day = function(weather){
+//         forecastContainerEl.textContent = ""
+//         forecastTitle.textContent = "5-Day Forecast:";
+    
+//         var forecast = weather.list;
+//             for(var i=5; i < forecast.length; i=i+8){
+//            var dailyForecast = forecast[i];
+            
+           
+//            var forecastEl=document.createElement("div");
+//            forecastEl.classList = "card bg-primary text-light m-2";
+    
+//            //console.log(dailyForecast)
+    
+//            //create date element
+//            var forecastDate = document.createElement("h5")
+//            forecastDate.textContent= moment.unix(dailyForecast.dt).format("DD MMM YYYY");
+//            forecastDate.classList = "card-header text-center"
+//            forecastEl.appendChild(forecastDate);
 
 
 // let forecast = {
