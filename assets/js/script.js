@@ -43,7 +43,20 @@ let weather = {
 
 weather.fetchWeather
 
-
+var weatherQueryString="https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minute,hourly&appid=3ee1d7a9f54e63abfc09f48b34de5548&units=metric";
+    fetch(weatherQueryString)
+    .then(function (response) {
+      if (!response.ok) {
+            throw response.json();
+      }
+      return response.json();
+    })
+    .then(function data){
+        if (!data{
+            generateContainerCityDiv(data);   // to Generate current weather
+            generateCityForecastDiv(data);    //to Generate forecast weather
+        }
+    });
 
 // var display5Day = function(weather){
 //         forecastContainerEl.textContent = ""
